@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import "jspdf-autotable";
 import { useReactToPrint } from 'react-to-print';
 import { ComponentToPrint } from './components/ComponentToPrint'; 
 
