@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from 'react'
+import "jspdf-autotable";
+import { useReactToPrint } from 'react-to-print';
+import { ComponentToPrint } from './components/ComponentToPrint'; 
 
-function App() {
+const App = () => {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <ComponentToPrint ref={componentRef} />
+      <button onClick={handlePrint} className='print-btn'>Print this out!</button>
+    </>
+  )
 }
 
-export default App;
+export default App
